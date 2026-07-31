@@ -21,6 +21,7 @@ int main()
 	MyDblLinkedList.InsertAtBeginning(2);
 	MyDblLinkedList.InsertAtBeginning(1);
 
+
 	cout << "\nLinked List Content:\n";
 	MyDblLinkedList.PrintList();
 	cout << "\nLinked List Size: " << MyDblLinkedList.Size() << endl;
@@ -28,7 +29,7 @@ int main()
 
 
 	clsDblLinkedList<int>::Node* N;
-	N = MyDblLinkedList.GetNode(20);
+	N = MyDblLinkedList.GetNode(2);
 	cout << "\nNode with index 2 value is : " << N->value << endl;
 
 

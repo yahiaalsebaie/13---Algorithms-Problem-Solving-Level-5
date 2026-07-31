@@ -152,7 +152,7 @@ public:
 
 		Node* temp = _head;
 		_head = _head->next;
-		if (_head != nullptr) 
+		if (_head != nullptr)
 			_head->prev = nullptr;
 		else _tail = nullptr;
 
@@ -163,7 +163,7 @@ public:
 	void DeleteLastNode()
 	{
 		if (_head == nullptr) return;
-		
+
 		/*if (_head->next == nullptr)
 		{
 			delete _head;
@@ -191,7 +191,7 @@ public:
 		Node* temp = _tail;
 		_tail = _tail->prev;
 		_tail->next = nullptr;
-		
+
 		delete temp;
 		_size--;
 	}
@@ -225,7 +225,7 @@ public:
 	void Reverse()
 	{
 		if (_head == nullptr || _size == 1) return;
-		
+
 		Node* current = _head;
 		Node* temp = nullptr;
 
@@ -236,10 +236,10 @@ public:
 			current->next = temp;
 			current = current->prev;
 		}
-		
+
 		_tail = _head;
 		_head = temp->prev;
-		
+
 		/*if(temp != nullptr)
 		{
 			_tail = _head;
@@ -247,19 +247,36 @@ public:
 		}*/
 	}
 
-	Node* GetNode(int index)
+	Node* GetNode(size_t index)
 	{
-		if (index < 0) return nullptr; // throw exeption
-		if (index > (_size - 1)) return nullptr;
+		if (index < 0 || index >= _size) return nullptr;
+
+		// O(N/2)
+		if (index < (_size / 2))
+		{
 			Node* temp = _head;
-			size_t count = 0;
+			for (size_t i = 0; i < index; i++)
+				temp = temp->next;
+			
+			return temp;
+		}
+
+		Node* temp = _tail;
+		for (size_t i = _size-1; i > index; i--)
+		{
+			temp = temp->prev;
+		}
+		return temp;
+
+		//O(N)
+		/*size_t count = 0;
 
 		while (count != index)
 		{
 			count++;
-			temp = temp->next ;
+			temp = temp->next;
 		}
-		return temp;
+		return temp;*/
 	}
 
 };
