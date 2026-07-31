@@ -20,6 +20,7 @@ private:
 	Node* _head = nullptr;
 	Node* _tail = nullptr;
 	int _size = 0;
+
 public:
 
 	clsDblLinkedList()
@@ -27,7 +28,6 @@ public:
 		_head = nullptr;
 		_tail = nullptr;
 		_size = 0;
-
 	}
 
 	~clsDblLinkedList()
@@ -220,6 +220,24 @@ public:
 
 		_head = nullptr;
 		_tail = nullptr;
+	}
+
+	void Reverse()
+	{
+		if (_tail == nullptr) return;
+		
+		Node* current = _head;
+		Node* temp = nullptr;
+
+		while (current != nullptr)
+		{
+			temp = current->prev;
+			current->prev = current->next;
+			current->next = temp;
+			current = current->prev;
+		}
+		_tail = _head;
+		_head = temp->prev;
 	}
 
 };

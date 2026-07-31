@@ -26,6 +26,12 @@ int main()
 	cout << "\nLinked List Size: " << MyDblLinkedList.Size() << endl;
 	cout << "\nIs Linked List Empty ?: " << MyDblLinkedList.IsEmpty();
 
+	cout << "\nLinked List Reversed Content:\n";
+	MyDblLinkedList.Reverse();
+	MyDblLinkedList.PrintList();
+	cout << "\nLinked List Size: " << MyDblLinkedList.Size() << endl;
+	cout << "\nIs Linked List Empty ?: " << MyDblLinkedList.IsEmpty();
+
 	clsDblLinkedList<int>::Node* N1 = MyDblLinkedList.Find(2);
 
 	if (N1 != NULL)
