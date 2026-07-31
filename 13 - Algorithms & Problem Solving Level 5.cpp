@@ -1,5 +1,6 @@
 
 #include "clsMyQueue.h"
+#include <cstdlib>
 #include <iostream>
 
 using namespace std;
@@ -9,11 +10,11 @@ int main()
 
 	clsMyQueue <int> MyQueue;
 
-	MyQueue.pushAtFirst(10);
-	MyQueue.pushAtFirst(20);
-	MyQueue.pushAtFirst(30);
-	MyQueue.pushAtFirst(40);
-	MyQueue.pushAtFirst(50);
+	MyQueue.push(10);
+	MyQueue.push(20);
+	MyQueue.push(30);
+	MyQueue.push(40);
+	MyQueue.push(50);
 
 
 	cout << "\nQueue: \n";
@@ -27,10 +28,6 @@ int main()
 
 	cout << "\n\nQueue after pop() : \n";
 	MyQueue.Print();
-
-
-
-
 
 	system("pause>0");
 

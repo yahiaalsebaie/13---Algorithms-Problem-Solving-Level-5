@@ -39,11 +39,11 @@ public:
 
 	T GetHeadValue() const
 	{
-		return _head->value;
+		return (_head == nullptr) ? T() : _head->value; // T() == Default Value / Default Constructor Call
 	}
 	T GetTailValue() const
 	{
-		return _tail->value;
+		return (_tail == nullptr) ? T() : _tail->value;
 	}
 
 
