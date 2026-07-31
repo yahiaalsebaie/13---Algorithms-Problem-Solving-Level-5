@@ -27,4 +27,21 @@ public:
 
 };
 
+/* // Composition Way
+template <class T>
+class clsMyStack
+{
+private:
+	clsDblLinkedList<T> _myList; // Or clsMyQueue<T> _myQueue;
+
+public:
+	void push(T item)  { _myList.InsertAtBeginning(item); }
+	void pop()         { _myList.DeleteFirstNode(); }
+	T Top()            { _myList.GetHeadValue(); }
+	T Bottom()         { _myList.GetTailValue(); }
+	bool IsEmpty()     { return _myList.IsEmpty(); }
+	size_t Size()      { return _myList.Size(); }
+};
+
+*/
 
