@@ -1,0 +1,71 @@
+
+#include "clsDblLinkedList.h"
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+
+	clsDblLinkedList <int> MyDblLinkedList;
+
+	cout << "\nIs Linked List Empty ?: " <<	MyDblLinkedList.IsEmpty();
+	cout << "\nLinked List Size: " << MyDblLinkedList.Size() << endl;
+
+	MyDblLinkedList.InsertAtBeginning(5);
+	MyDblLinkedList.InsertAtBeginning(4);
+	MyDblLinkedList.InsertAtBeginning(3);
+	MyDblLinkedList.InsertAtBeginning(2);
+	MyDblLinkedList.InsertAtBeginning(1);
+
+	cout << "\nAdding Content:\n";
+	cout << "\nLinked List Content:\n";
+	MyDblLinkedList.PrintList();
+	cout << "\nLinked List Size: " << MyDblLinkedList.Size() << endl;
+	cout << "\nIs Linked List Empty ?: " << MyDblLinkedList.IsEmpty();
+
+	clsDblLinkedList<int>::Node* N1 = MyDblLinkedList.Find(2);
+
+	if (N1 != NULL)
+		cout << "\n Node with value " << N1->value << " is Found ^ _ ^ \n";
+	else
+		cout << "\n Node Is not found :-(\n";
+
+	
+	MyDblLinkedList.InsertAfter(N1, 500);
+	cout << "\nAfter Inserting 500 after " << N1->value << " :\n";
+	MyDblLinkedList.PrintList();
+	cout << "\nSize: " << MyDblLinkedList.Size() << endl;
+
+
+	MyDblLinkedList.InsertAtEnd(700);
+	cout << "\nAfter Inserting 700 at end:\n";
+	MyDblLinkedList.PrintList();
+	cout << "\nSize: " << MyDblLinkedList.Size() << endl;
+
+	clsDblLinkedList<int>::Node* N2 = MyDblLinkedList.Find(4);
+	MyDblLinkedList.DeleteNode(N2);
+	cout << "\nAfter Deleting 4:\n";
+	MyDblLinkedList.PrintList();
+	cout << "\nSize: " << MyDblLinkedList.Size() << endl;
+
+	MyDblLinkedList.DeleteFirstNode();
+	cout << "\nAfter Deleting First Node:\n";
+	MyDblLinkedList.PrintList();
+	cout << "\nSize: " << MyDblLinkedList.Size() << endl;
+
+	cout << "\nAfter Deleting Last Node:\n";
+	MyDblLinkedList.DeleteLastNode();
+	MyDblLinkedList.PrintList();
+	cout << "\nSize: " << MyDblLinkedList.Size() << endl;
+	
+	cout << "\nAfter Clear Linked List:\n";
+	MyDblLinkedList.Clear();
+	MyDblLinkedList.PrintList();
+	cout << "Size: " << MyDblLinkedList.Size() << endl;
+	cout << "Is Linked List Empty ?: " << MyDblLinkedList.IsEmpty();
+	system("pause>0");
+	return 0;
+}
