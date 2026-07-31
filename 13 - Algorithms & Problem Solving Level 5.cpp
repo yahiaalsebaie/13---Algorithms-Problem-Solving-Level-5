@@ -14,17 +14,23 @@ int main()
 	cout << "\nIs Linked List Empty ?: " <<	MyDblLinkedList.IsEmpty();
 	cout << "\nLinked List Size: " << MyDblLinkedList.Size() << endl;
 
+	cout << "\nAdding Content:\n";
 	MyDblLinkedList.InsertAtBeginning(5);
 	MyDblLinkedList.InsertAtBeginning(4);
 	MyDblLinkedList.InsertAtBeginning(3);
 	MyDblLinkedList.InsertAtBeginning(2);
 	MyDblLinkedList.InsertAtBeginning(1);
 
-	cout << "\nAdding Content:\n";
 	cout << "\nLinked List Content:\n";
 	MyDblLinkedList.PrintList();
 	cout << "\nLinked List Size: " << MyDblLinkedList.Size() << endl;
-	cout << "\nIs Linked List Empty ?: " << MyDblLinkedList.IsEmpty();
+	cout << "\nIs Linked List Empty ?: " << MyDblLinkedList.IsEmpty() << endl;
+
+
+	clsDblLinkedList<int>::Node* N;
+	N = MyDblLinkedList.GetNode(20);
+	cout << "\nNode with index 2 value is : " << N->value << endl;
+
 
 	cout << "\nLinked List Reversed Content:\n";
 	MyDblLinkedList.Reverse();

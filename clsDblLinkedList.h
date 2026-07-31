@@ -224,7 +224,7 @@ public:
 
 	void Reverse()
 	{
-		if (_tail == nullptr) return;
+		if (_head == nullptr || _size == 1) return;
 		
 		Node* current = _head;
 		Node* temp = nullptr;
@@ -236,8 +236,30 @@ public:
 			current->next = temp;
 			current = current->prev;
 		}
+		
 		_tail = _head;
 		_head = temp->prev;
+		
+		/*if(temp != nullptr)
+		{
+			_tail = _head;
+			_head = temp->prev;
+		}*/
+	}
+
+	Node* GetNode(int index)
+	{
+		if (index < 0) return nullptr; // throw exeption
+		if (index > (_size - 1)) return nullptr;
+			Node* temp = _head;
+			size_t count = 0;
+
+		while (count != index)
+		{
+			count++;
+			temp = temp->next ;
+		}
+		return temp;
 	}
 
 };
