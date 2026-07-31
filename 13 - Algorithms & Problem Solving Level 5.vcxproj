@@ -124,9 +124,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="13 - Algorithms &amp; Problem Solving Level 5.cpp" />
+    <ClCompile Include="DoublyLinkedListClassTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clsDblLinkedList.h" />
+    <ClInclude Include="clsMyQueue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
