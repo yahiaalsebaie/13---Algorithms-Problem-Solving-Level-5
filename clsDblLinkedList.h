@@ -16,10 +16,12 @@ public:
 		Node* prev = nullptr;
 	};
 
-private:
+protected:
 	Node* _head = nullptr;
 	Node* _tail = nullptr;
 	int _size = 0;
+
+
 
 public:
 
@@ -35,7 +37,17 @@ public:
 		Clear();
 	}
 
-	int Size() const // const = Read-Only Observer
+	T GetHeadValue() const
+	{
+		return _head->value;
+	}
+	T GetTailValue() const
+	{
+		return _tail->value;
+	}
+
+
+	size_t Size() const // const = Read-Only Observer
 	{
 		return _size;
 	}
