@@ -16,7 +16,7 @@ public:
 		Node* prev = nullptr;
 	};
 
-protected:
+private:
 	Node* _head = nullptr;
 	Node* _tail = nullptr;
 	int _size = 0;
