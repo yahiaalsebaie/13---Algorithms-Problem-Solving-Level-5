@@ -117,6 +117,8 @@ public:
 		_size++;
 	}
 
+
+
 	void InsertAtEnd(T value)
 	{
 		Node* newNode = new Node();
@@ -282,7 +284,31 @@ public:
 	T GetItem(size_t index)
 	{
 		Node* nodeItem = GetNode(index);
-		return (nodeItem == nullptr) ? T() : nodeItem->value;
+		return (nodeItem == nullptr) ? T() : nodeItem->value; // T() == Default Value / Default Constructor Call
 	}
+
+	bool UpdateItem(size_t index, T value)
+	{
+		Node* node = GetNode(index);
+		
+		if (node != nullptr)
+		{
+			node->value = value;
+			return true;
+		}
+		return false;
+	}
+
+	bool InsertAfter(size_t index, T value)
+	{
+		Node* node = GetNode(index);
+		if (node != nullptr)
+		{
+			InsertAfter(node, value);
+			return true;
+		}
+			return false;
+	}
+
 
 };

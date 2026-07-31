@@ -35,6 +35,16 @@ int main()
 	cout << "\nItem(2) value is : " << MyDblLinkedList.GetItem(2) << endl;
 
 
+	cout << "\nAfter Updating Item(2):\n";
+	MyDblLinkedList.UpdateItem(2, 300);
+	MyDblLinkedList.PrintList();
+
+
+	MyDblLinkedList.InsertAfter(2, 350);
+	cout << "\nAfter Inserting 350 after index 3 \n";
+	MyDblLinkedList.PrintList();
+	cout << "\nSize: " << MyDblLinkedList.Size() << endl;
+
 	cout << "\nLinked List Reversed Content:\n";
 	MyDblLinkedList.Reverse();
 	MyDblLinkedList.PrintList();
