@@ -249,7 +249,7 @@ public:
 
 	Node* GetNode(size_t index)
 	{
-		if (index < 0 || index >= _size) return nullptr;
+		if (index < 0 || index >= _size) return nullptr; // throw nullptr exception
 
 		// O(N/2)
 		if (index < (_size / 2))
@@ -277,6 +277,12 @@ public:
 			temp = temp->next;
 		}
 		return temp;*/
+	}
+
+	T GetItem(size_t index)
+	{
+		Node* nodeItem = GetNode(index);
+		return (nodeItem == nullptr) ? T() : nodeItem->value;
 	}
 
 };

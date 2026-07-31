@@ -32,6 +32,8 @@ int main()
 	N = MyDblLinkedList.GetNode(2);
 	cout << "\nNode with index 2 value is : " << N->value << endl;
 
+	cout << "\nItem(2) value is : " << MyDblLinkedList.GetItem(2) << endl;
+
 
 	cout << "\nLinked List Reversed Content:\n";
 	MyDblLinkedList.Reverse();
