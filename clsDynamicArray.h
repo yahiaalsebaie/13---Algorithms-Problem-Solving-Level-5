@@ -166,7 +166,8 @@ public:
 
 	bool InsertAt(size_t index, T value)
 	{
-		if (index > _size || index < 0) return false;
+		if (index > _size || index < 0) return false; 
+		//I know that index is of type 'size_t' (Unsigned), That means (index < 0) is always false, Condition '(index > _size) return false;' is enough, But i set this condition for increased security and unexpected status ^_^.
 		
 		T* _TempArray = new T[_size + 1];
 
@@ -190,6 +191,25 @@ public:
 		_size++;
 
 		return true;
+	}
+
+	bool InsertAtBeginning(T value)
+	{
+		return InsertAt(0, value);
+	}
+	bool InsertAtEnd(T value)
+	{
+		return InsertAt(_size, value);
+	}
+	bool InsertBefore(size_t index, T value)
+	{
+		if (index < 0 || index >= _size) return false;
+		return InsertAt(index, value);
+	}
+	bool InsertAfter(size_t index, T value)
+	{
+		if (index >= _size) return false;
+		return InsertAt(index + 1, value);
 	}
 
 
