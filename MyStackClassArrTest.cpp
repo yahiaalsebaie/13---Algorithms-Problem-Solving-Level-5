@@ -1,5 +1,6 @@
 
 #include "clsMyStackArr.h"
+#include <cstdlib>
 #include <iostream>
 
 using namespace std;
@@ -63,5 +64,4 @@ int main()
 	MyStack.Print();
 
 	system("pause>0");
-
 }
