@@ -35,9 +35,10 @@ public:
 
 	bool SetItem(size_t index, T value)
 	{
-		if (index >= _size || _size < 0)
+		/*if (index >= _size || _size < 0)
+			return false;*/
+		if (_OriginalArray == nullptr || index >= _size)
 			return false;
-
 		_OriginalArray[index] = value;
 		return true;
 	}
@@ -47,7 +48,7 @@ public:
 		return (_size == 0);
 	}
 
-	size_t Size()
+	size_t Size() const
 	{
 		return _size;
 	}
@@ -81,7 +82,7 @@ public:
 		_OriginalArray = _TempArray;
 	}
 
-	T GetItem(size_t index)
+	T GetItem(size_t index) const
 	{
 		return (index >= _size || _OriginalArray == nullptr) ? T() : _OriginalArray[index];
 	}
@@ -209,7 +210,6 @@ public:
 		if (index >= _size) return false;
 		return InsertAt(index + 1, value);
 	}
-
 
 };
 

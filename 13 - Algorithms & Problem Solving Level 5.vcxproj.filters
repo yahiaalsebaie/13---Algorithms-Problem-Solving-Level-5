@@ -27,6 +27,12 @@
     <ClCompile Include="MyStackClassTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DynamicArrayClassTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyQueueArrayClassTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clsDblLinkedList.h">
@@ -39,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="clsDynamicArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clsMyQueueArr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
