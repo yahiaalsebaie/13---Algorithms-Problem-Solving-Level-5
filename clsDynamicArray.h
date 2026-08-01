@@ -86,8 +86,6 @@ public:
 		return (index >= _size || _OriginalArray == nullptr) ? T() : _OriginalArray[index];
 	}
 
-
-
 	void Reverse()
 	{
 		if (_size <= 1 || _OriginalArray == nullptr) return;
