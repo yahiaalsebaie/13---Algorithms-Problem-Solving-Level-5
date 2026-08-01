@@ -26,10 +26,11 @@ public:
 		_undoStack.push(_value);
 		_value = value;
 	
-		while (!_redoStack.IsEmpty())
+		/*while (!_redoStack.IsEmpty())
 		{
 			_redoStack.pop();
-		}
+		}*/
+		_redoStack.Clear();
 	}
 	const string& GetValue() const
 	{
