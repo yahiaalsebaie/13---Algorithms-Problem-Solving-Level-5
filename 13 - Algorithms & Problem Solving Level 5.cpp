@@ -1,37 +1,31 @@
-#include <iostream>
 #include "clsDynamicArray.h"
+#include <cstdlib>
+#include <iostream>
 
 using namespace std;
 
 int main()
 {
 
-    clsDynamicArray <int> MyDynamicArray(5);
+	clsDynamicArray <int> MyDynamicArray(5);
 
-    MyDynamicArray.SetItem(0, 10);
-    MyDynamicArray.SetItem(1, 20);
-    MyDynamicArray.SetItem(2, 30);
-    MyDynamicArray.SetItem(3, 40);
-    MyDynamicArray.SetItem(4, 50);
+	MyDynamicArray.SetItem(0, 10);
+	MyDynamicArray.SetItem(1, 20);
+	MyDynamicArray.SetItem(2, 30);
+	MyDynamicArray.SetItem(3, 40);
+	MyDynamicArray.SetItem(4, 50);
 
-    cout << "\nIs Empty?  " << MyDynamicArray.IsEmpty();
-    cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
-    cout << "\nArray Items: \n";
+	cout << "\nIs Empty?  " << MyDynamicArray.IsEmpty();
+	cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
+	cout << "\nArray Items: \n";
 
-    MyDynamicArray.PrintList();
+	MyDynamicArray.PrintList();
 
-    int Index = MyDynamicArray.Find(30);
-    if (Index == -1)
-        cout << "\nItem was not Found :-(\n ";
-    else
-        cout << "\n30 is found at index : " << Index;
+	MyDynamicArray.InsertAt(2, 500);
+	cout << "\n\nArray after insert 500 at index 2:";
+	cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
+	MyDynamicArray.PrintList();
 
-    MyDynamicArray.DeleteItem(30);
-    cout << "\n\nArray Items after deleting 30:";
-    cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
-    MyDynamicArray.PrintList();
-
-
-    system("pause>0");
-
+	system("pause>0");
+	return 0;
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <utility>
 
 using namespace std;
 
@@ -11,7 +10,6 @@ class clsDynamicArray
 protected:
 	size_t _size = 0;
 	T* _OriginalArray;
-	T* _TempArray;
 
 	void _Swap(T& item1, T& item2)
 	{
@@ -67,7 +65,7 @@ public:
 	{
 		if (newSize < 0) newSize = 0;
 
-		_TempArray = new T[newSize];
+		T* _TempArray = new T[newSize];
 
 		if (newSize < _size)
 			_size = newSize;
@@ -142,7 +140,7 @@ public:
 
 	bool DeleteLastItem()
 	{
-		return DeleteItemAt(_size-1);
+		return DeleteItemAt(_size - 1);
 	}
 
 	int Find(T value)
@@ -157,12 +155,40 @@ public:
 	bool DeleteItem(T value)
 	{
 
-		if (_OriginalArray == nullptr || IsEmpty() ) return false;
-		
-		int index =  Find(value);
+		if (_OriginalArray == nullptr || IsEmpty()) return false;
+
+		int index = Find(value);
 		if (index == -1) return false;
-		
+
 		return DeleteItemAt(index);
+		return true;
+	}
+
+	bool InsertAt(size_t index, T value)
+	{
+		if (index > _size || index < 0) return false;
+		
+		T* _TempArray = new T[_size + 1];
+
+		//Copy elements before index
+		for (size_t i = 0; i < index; i++)
+		{
+			_TempArray[i] = _OriginalArray[i];
+		}
+
+		//Set Index value
+		_TempArray[index] = value;
+
+		//Shift elements After index
+		for (size_t i = index + 1; i < _size + 1 ; i++)
+		{
+			_TempArray[i] = _OriginalArray[i - 1];
+		}
+
+		delete[] _OriginalArray;
+		_OriginalArray = _TempArray;
+		_size++;
+
 		return true;
 	}
 
