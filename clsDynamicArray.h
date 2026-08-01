@@ -135,6 +135,37 @@ public:
 		return true;
 	}
 
+	bool DeleteFirstItem()
+	{
+		return DeleteItemAt(0);
+	}
+
+	bool DeleteLastItem()
+	{
+		return DeleteItemAt(_size-1);
+	}
+
+	int Find(T value)
+	{
+		for (size_t i = 0; i < _size; i++)
+		{
+			if (_OriginalArray[i] == value) return i;
+		}
+		return -1;
+	}
+
+	bool DeleteItem(T value)
+	{
+
+		if (_OriginalArray == nullptr || IsEmpty() ) return false;
+		
+		int index =  Find(value);
+		if (index == -1) return false;
+		
+		return DeleteItemAt(index);
+		return true;
+	}
+
 
 };
 

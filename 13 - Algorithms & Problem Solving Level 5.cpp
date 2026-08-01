@@ -1,5 +1,3 @@
-
-
 #include <iostream>
 #include "clsDynamicArray.h"
 
@@ -22,15 +20,17 @@ int main()
 
     MyDynamicArray.PrintList();
 
-    MyDynamicArray.DeleteFirstItem();
-    cout << "\nArray Items after deleting FirstItem: \n";
+    int Index = MyDynamicArray.Find(30);
+    if (Index == -1)
+        cout << "\nItem was not Found :-(\n ";
+    else
+        cout << "\n30 is found at index : " << Index;
+
+    MyDynamicArray.DeleteItem(30);
+    cout << "\n\nArray Items after deleting 30:";
     cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
     MyDynamicArray.PrintList();
 
-    MyDynamicArray.DeleteLastItem();
-    cout << "\nArray Items after deleting LastItem: \n";
-    cout << "\nArray Size: " << MyDynamicArray.Size() << "\n";
-    MyDynamicArray.PrintList();
 
     system("pause>0");
 
