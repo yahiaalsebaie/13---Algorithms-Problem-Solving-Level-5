@@ -15,12 +15,12 @@ public:
 	}
 
 	
-	T Top()
+	const T& Top() const
 	{
 		return clsMyQueue<T>::front();
 	}
 
-	T Bottom()
+	const T& Bottom() const
 	{
 		return clsMyQueue<T>::back();
 	}

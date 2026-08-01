@@ -36,13 +36,13 @@ public:
 		return _myList.IsEmpty();
 	}
 
-	T front() const
+	const T& front() const
 	{
 		return _myList.GetHeadValue();
 		//		return _MyList.GetItem(0);
 	}
 
-	T back() const
+	const T& back() const
 	{
 		return _myList.GetTailValue();
 		//		return _myList.GetItem(Size() - 1);
