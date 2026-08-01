@@ -25,12 +25,13 @@ private:
 
 public:
 
-	clsDblLinkedList()
+	/*clsDblLinkedList()
 	{
 		_head = nullptr;
 		_tail = nullptr;
 		_size = 0;
-	}
+	}*/
+	clsDblLinkedList() = default;
 
 	~clsDblLinkedList()
 	{
@@ -196,9 +197,10 @@ public:
 		if (_head == _tail)
 		{
 			delete _head;
-			_head == nullptr;
-			_tail == nullptr;
+			_head = nullptr;
+			_tail = nullptr;
 			_size--;
+			return;
 		}
 
 		//O(1) Using tail
@@ -216,7 +218,10 @@ public:
 		if (_head == nullptr || NodeToDelete == nullptr) return;
 
 		if (_head == NodeToDelete) _head = NodeToDelete->next;
-
+		
+		if (_tail == NodeToDelete)
+			_tail = NodeToDelete->prev;
+		
 		if (NodeToDelete->next != nullptr)
 			NodeToDelete->next->prev = NodeToDelete->prev;
 
@@ -229,11 +234,12 @@ public:
 	}
 	void Clear()
 	{
-		while (_size > 0)
+		/*while (_size > 0)
 			DeleteFirstNode();
 
 		_head = nullptr;
-		_tail = nullptr;
+		_tail = nullptr;*/
+		while (!IsEmpty()) DeleteFirstNode();
 	}
 
 	void Reverse()
