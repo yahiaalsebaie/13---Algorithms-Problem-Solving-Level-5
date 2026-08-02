@@ -1,55 +1,54 @@
-
-#include "clsMyString.h"
 #include <iostream>
+#include "clsQueueLine.h"
 
 using namespace std;
 
 int main()
 {
 
-	cout << "\n\n\t\t\t\t\t\t Undo/Redo Project\n\n";
+    clsQueueLine PayBillsQueue("A0", 10);
+    clsQueueLine SubscriptionsQueue("B0", 5);
 
-	clsMyString S1;
 
-	cout << "\nS1  = " << S1.Value << "\n";
+    PayBillsQueue.IssueTicket();
+    PayBillsQueue.IssueTicket();
+    PayBillsQueue.IssueTicket();
+    PayBillsQueue.IssueTicket();
+    PayBillsQueue.IssueTicket();
 
-	S1.Value = "Mohammed";
+    cout << "\nPay Bills Queue Info:\n";
+    PayBillsQueue.PrintInfo();
 
-	cout << "S1  = " << S1.Value << "\n";
+    PayBillsQueue.PrintTicketsLineRTL();
+    PayBillsQueue.PrintTicketsLineLTR();
 
-	S1.Value = "Mohammed2";
 
-	cout << "S1  = " << S1.Value << "\n";
 
-	S1.Value = "Mohammed3";
+    PayBillsQueue.PrintAllTickets();
 
-	cout << "S1  = " << S1.Value << "\n";
+    PayBillsQueue.ServeNextClient();
+    cout << "\nPay Bills Queue After Serving One client\n";
+    PayBillsQueue.PrintInfo();
 
-	cout << "\n\nUndo: ";
-	cout << "\n__________\n";
+    cout << "\nSubscriptions Queue Info:\n";
 
-	S1.Undo();
-	cout << "\nS1  after undo = " << S1.Value << "\n";
+    SubscriptionsQueue.IssueTicket();
+    SubscriptionsQueue.IssueTicket();
+    SubscriptionsQueue.IssueTicket();
 
-	S1.Undo();
-	cout << "S1  after undo = " << S1.Value << "\n";
 
-	S1.Undo();
-	cout << "S1  after undo = " << S1.Value << "\n";
+    SubscriptionsQueue.PrintInfo();
 
-	cout << "\n\nRedo: ";
-	cout << "\n__________\n";
+    SubscriptionsQueue.PrintTicketsLineRTL();
+    SubscriptionsQueue.PrintTicketsLineLTR();
 
-	S1.Redo();
-	cout << "\nS1  after Redo = " << S1.Value << "\n";
+    SubscriptionsQueue.PrintAllTickets();
 
-	S1.Redo();
-	cout << "S1  after Redo = " << S1.Value << "\n";
+    SubscriptionsQueue.ServeNextClient();
+    cout << "\nSubscriptions Queue After Serving One client\n";
+    SubscriptionsQueue.PrintInfo();
 
-	S1.Redo();
-	cout << "S1  after Redo = " << S1.Value << "\n";
 
-	system("pause>0");
-	return 0;
+    return 0;
 }
 
