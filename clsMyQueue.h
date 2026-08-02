@@ -11,7 +11,7 @@ protected: clsDblLinkedList<T> _myList; // Composition / Wrapper
 
 public:
 
-	void push(T item)
+	void push(const T& item) 
 	{
 		_myList.InsertAtEnd(item);
 	}
@@ -55,11 +55,11 @@ public:
 
 	void Reverse()
 	{
-		return	_myList.Reverse();
+		_myList.Reverse();
 	}
 
 
-	void UpdateItem(size_t index, T value)
+	void UpdateItem(size_t index, const T& value)
 	{
 		_myList.UpdateItem(index, value);
 	}
