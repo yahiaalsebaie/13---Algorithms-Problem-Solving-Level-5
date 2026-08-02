@@ -10,17 +10,26 @@ using namespace std;
 class clsQueueLine
 {
 private:
-	std::string _prefix = "";
+	struct stTicket
+	{
+		int TicketNumber = 0;
+		string IssueTime;
+		int ExpectedServeTime = 0;
+	};
+
+	clsMyQueue<stTicket> _queue;
+
+	string _prefix = "";
 	int _operationTime = 0;
-	clsMyQueue<int> _queue;
-	int _servedClients = 0;
 	int _totalTickets = 0;
+	int _servedClients = 0;
 
 
 private:
+
 	int GetWaitingClients() const
 	{
-		return _totalTickets - _servedClients;
+		return _totalTickets - _servedClients ;
 	}
 	static string Spaces(short count = 37)
 	{
@@ -34,14 +43,19 @@ public:
 		_prefix = prefix;
 		_operationTime = OpTime;
 	}*/
-	clsQueueLine(const std::string& prefix, const int& OperationTime) : _prefix(prefix), _operationTime(OperationTime) {}
+	clsQueueLine(const string& prefix, int operationTime) : _prefix(prefix), _operationTime(operationTime){ }
 
+	
 	
 	void IssueTicket()
 	{
-		++_totalTickets;
-		_queue.push(_totalTickets);
+		stTicket ticket;
 
+		ticket.TicketNumber = ++_totalTickets;
+		ticket.IssueTime = clsDate::GetSystemDateTimeString();
+		ticket.ExpectedServeTime = (GetWaitingClients() /*- 1*/) * _operationTime;
+
+		_queue.push(ticket);
 	}
 
 	void PrintInfo()
@@ -52,10 +66,10 @@ public:
 		cout << Spaces() << separatorLine;
 		cout << Spaces() << "\t\t\tQueue Info\n";
 		cout << Spaces() << separatorLine;
-		cout << Spaces() << "\t Prefix          = " << _prefix << "\n";
-		cout << Spaces() << "\t Total Tickets   = " << _totalTickets << "\n";
-		cout << Spaces() << "\t Served Clients  = " << _servedClients << "\n";
-		cout << Spaces() << "\t Waiting Clients = " << GetWaitingClients() << "\n";
+		cout << Spaces() << "\t Prefix          = " << _prefix << '\n';
+		cout << Spaces() << "\t Total Tickets   = " << _totalTickets << '\n';
+		cout << Spaces() << "\t Served Clients  = " << _servedClients << '\n';
+		cout << Spaces() << "\t Waiting Clients = " << GetWaitingClients() << '\n';
 		cout << Spaces() << separatorLine << endl;
 
 	}
@@ -64,8 +78,10 @@ public:
 	{
 		string rArrow = clsUtil::ColorText(" <-- ", clsUtil::enColor::BRIGHT_GREEN);
 
-		cout << Spaces(30) << " Tickets: ";
-		for (int i = 1; i <= _totalTickets; i++)
+		if(_queue.IsEmpty()) cout << Spaces() << " Tickets: No Tickets... ";
+		else cout << Spaces(30) << " Tickets: ";
+		
+		for (int i = 1; i <=_totalTickets; i++)
 		{
 			cout << _prefix << i << rArrow;
 		}
@@ -76,37 +92,53 @@ public:
 	{
 		string rArrow = clsUtil::ColorText(" --> ", clsUtil::enColor::BRIGHT_GREEN);
 
-		cout << Spaces(30) << " Tickets: ";
-		for (int i = _totalTickets; i >= 1; i--)
+		if (_queue.IsEmpty()) cout << Spaces() << " Tickets: No Tickets... ";
+		else cout << Spaces(30) << " Tickets: ";
+
+		for (int i =_totalTickets; i >= 1; i--)
 		{
 			cout << _prefix << i << rArrow;
 		}
 		cout << endl;
 	}
 
-	void PrintTicket(int ticketNumber) const
+	void PrintTicket(const stTicket& ticket) const
 	{
 		string separatorLine = clsUtil::ColorText("_______________________________________\n", clsUtil::enColor::BRIGHT_MAGENTA);
 
+		int waitingClients = (ticket.TicketNumber - _servedClients - 1);
+		int expectedServeTime = waitingClients * GetWaitingClients();
 		cout << Spaces(40) << separatorLine;
-		cout << Spaces(40) << "\t\t  " << _prefix << ticketNumber << "\n";
-		cout << Spaces(40) << "\t " << clsDate::GetSystemDateTimeString() << endl;
-		cout << Spaces(40) << "\t Waiting Clients = " << (--ticketNumber) << "\n";
-		cout << Spaces(40) << "\t Serve Time In " << (_operationTime * (ticketNumber)) << " Minutes.\n";
+	
+		cout << Spaces(40) << "\t\t" << _prefix << ticket.TicketNumber << '\n';
+		cout << Spaces(40) << "\t" << ticket.IssueTime << '\n';
+		cout << Spaces(40) << "\tWaiting Clients = " << waitingClients << '\n';
+		cout << Spaces(40) << "\tServe Time In " << expectedServeTime << " Minutes.\n";
+
 		cout << Spaces(40) << separatorLine;
 		cout << endl;
 	}
 
 	void PrintAllTickets()
 	{
-		cout << endl; 
+		cout << endl;
 		string Title = clsUtil::ColorText("\t\t     ---Tickets---\n",clsUtil::enColor::BRIGHT_GREEN);
-
 		cout << Spaces(35) << Title;
-		for (int ticketNumber = 1; ticketNumber <= GetWaitingClients(); ++ticketNumber)
+
+		for (int i = 0; i < GetWaitingClients(); i++)
 		{
-			PrintTicket(ticketNumber);
+
+			PrintTicket(_queue.GetItem(i));
 		}
+
+		/*clsMyQueue<stTicket> temp = _queue;
+
+		while (!temp.IsEmpty())
+		{
+			PrintTicket(temp.front());
+			if (temp.IsEmpty()) break;
+			temp.pop();
+		}*/
 
 	}
 
@@ -119,7 +151,12 @@ public:
 
 	}
 
+	string WhoIsNext() const
+	{
+		if (_queue.IsEmpty()) return "No Clients";
 
+		return _prefix + to_string(_queue.front().TicketNumber);
+	}
 
 };
 

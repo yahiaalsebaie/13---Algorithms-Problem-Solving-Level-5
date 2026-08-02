@@ -1,4 +1,5 @@
 #include "clsQueueLine.h"
+#include <cstdlib>
 #include <iostream>
 
 using namespace std;
@@ -47,10 +48,11 @@ int main()
 	SubscriptionsQueue.ServeNextClient();
 	cout << "\nSubscriptions Queue After Serving One client\n";
 	SubscriptionsQueue.PrintInfo();
+	
 
-	int a;
-	cin >> a;
+	cout << "\nNext Clients Is: [" <<  SubscriptionsQueue.WhoIsNext() << "]\n" << endl;
 
+	system("pause>0");
 	return 0;
 }
 
