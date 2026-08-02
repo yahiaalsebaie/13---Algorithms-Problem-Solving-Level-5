@@ -30,7 +30,7 @@ public:
 		{
 			_redoStack.pop();
 		}*/
-		_redoStack.Clear();
+		_redoStack.Clear(); // Any new modification after Undo will Clear Redo history.
 	}
 	const string& GetValue() const
 	{
@@ -49,7 +49,6 @@ public:
 
 		_value = _undoStack.Top();
 		_undoStack.pop();
-
 	}
 	void Redo()
 	{

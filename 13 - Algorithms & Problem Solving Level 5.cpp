@@ -49,12 +49,7 @@ int main()
 	S1.Redo();
 	cout << "S1  after Redo = " << S1.Value << "\n";
 
-	int f;
-	cin >> f;
-
 	system("pause>0");
-
-
 	return 0;
 }
 

@@ -36,6 +36,9 @@
     <ClCompile Include="MyStackClassArrTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UndoRedeStringClassTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clsDblLinkedList.h">

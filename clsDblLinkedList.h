@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <stdexcept>
 #include <string>
 
 using namespace std;
@@ -38,13 +39,15 @@ public:
 		Clear();
 	}
 
-	T GetHeadValue() const
+	const T& GetHeadValue() const
 	{
-		return (_head == nullptr) ? T() : _head->value; // T() == Default Value / Default Constructor Call
+		return (_head == nullptr) ? throw std::out_of_range("The list is empty.") : _head->value; // T() == Default Value / Default Constructor Call
+		//return (_head == nullptr) ? T() : _head->value; // T() == Default Value / Default Constructor Call
 	}
-	T GetTailValue() const
+	const T& GetTailValue() const
 	{
-		return (_tail == nullptr) ? T() : _tail->value;
+		return (_tail == nullptr) ? throw std::out_of_range("The list is empty.") : _tail->value;
+		//return (_tail == nullptr) ? T() : _tail->value; // Can`t return T() because 'const T&', So I Put throw message.
 	}
 
 
@@ -218,10 +221,10 @@ public:
 		if (_head == nullptr || NodeToDelete == nullptr) return;
 
 		if (_head == NodeToDelete) _head = NodeToDelete->next;
-		
+
 		if (_tail == NodeToDelete)
 			_tail = NodeToDelete->prev;
-		
+
 		if (NodeToDelete->next != nullptr)
 			NodeToDelete->next->prev = NodeToDelete->prev;
 
@@ -277,12 +280,12 @@ public:
 			Node* temp = _head;
 			for (size_t i = 0; i < index; i++)
 				temp = temp->next;
-			
+
 			return temp;
 		}
 
 		Node* temp = _tail;
-		for (size_t i = _size-1; i > index; i--)
+		for (size_t i = _size - 1; i > index; i--)
 		{
 			temp = temp->prev;
 		}
@@ -302,13 +305,14 @@ public:
 	T GetItem(size_t index)
 	{
 		Node* nodeItem = GetNode(index);
+		//return (nodeItem == nullptr) ? throw std::out_of_range("Index out of range") : nodeItem->value;
 		return (nodeItem == nullptr) ? T() : nodeItem->value; // T() == Default Value / Default Constructor Call
 	}
 
 	bool UpdateItem(size_t index, T value)
 	{
 		Node* node = GetNode(index);
-		
+
 		if (node != nullptr)
 		{
 			node->value = value;
@@ -325,7 +329,7 @@ public:
 			InsertAfter(node, value);
 			return true;
 		}
-			return false;
+		return false;
 	}
 
 
