@@ -149,6 +149,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Bank-System-OOP\MyCustomeClasses\clsDate.h" />
+    <ClInclude Include="..\Bank-System-OOP\MyCustomeClasses\clsInputValidate.h" />
+    <ClInclude Include="..\Bank-System-OOP\MyCustomeClasses\clsPeriod.h" />
+    <ClInclude Include="..\Bank-System-OOP\MyCustomeClasses\clsString.h" />
+    <ClInclude Include="..\Bank-System-OOP\MyCustomeClasses\clsUtil.h" />
     <ClInclude Include="clsDblLinkedList.h" />
     <ClInclude Include="clsDynamicArray.h" />
     <ClInclude Include="clsMyQueue.h" />
