@@ -9,6 +9,8 @@ class clsMyStackArr : public clsMyQueueArr <T>
 
 public:
 
+public:
+	
 	void push(T item)
 	{
 		clsMyQueueArr<T>::InsertAtFront(item);

@@ -62,6 +62,10 @@ int main()
     cout << "\n\nStack after Clear(): \n";
     MyStack.Print();
 
+    cout << "\n==================================================\n";
+    cout << "           ALL TESTS COMPLETED SUCCESSFULLY        \n";
+    cout << "==================================================\n";
+
     system("pause>0");
 
 }

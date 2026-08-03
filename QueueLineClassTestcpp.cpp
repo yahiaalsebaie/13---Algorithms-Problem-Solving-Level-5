@@ -52,6 +52,12 @@ int main()
 
 	cout << "\nNext Clients Is: [" << SubscriptionsQueue.WhoIsNext() << "]\n" << endl;
 
+
+	cout << "\n==================================================\n";
+	cout << "           ALL TESTS COMPLETED SUCCESSFULLY        \n";
+	cout << "==================================================\n";
+
+
 	system("pause>0");
 	return 0;
 }

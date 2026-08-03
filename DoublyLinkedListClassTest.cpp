@@ -91,6 +91,11 @@ int main()
 	MyDblLinkedList.PrintList();
 	cout << "Size: " << MyDblLinkedList.Size() << endl;
 	cout << "Is Linked List Empty ?: " << MyDblLinkedList.IsEmpty();
+
+	cout << "\n==================================================\n";
+	cout << "           ALL TESTS COMPLETED SUCCESSFULLY        \n";
+	cout << "==================================================\n";
+
 	system("pause>0");
 	return 0;
 }

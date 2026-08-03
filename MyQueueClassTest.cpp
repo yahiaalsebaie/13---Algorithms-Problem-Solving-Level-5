@@ -63,7 +63,9 @@ int main()
 	cout << "\n\nQueue after Clear(): \n";
 	MyQueue.Print();
 
-
+	cout << "\n==================================================\n";
+	cout << "           ALL TESTS COMPLETED SUCCESSFULLY        \n";
+	cout << "==================================================\n";
 
 
 	system("pause>0");

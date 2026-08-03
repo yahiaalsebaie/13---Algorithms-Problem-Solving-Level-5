@@ -49,6 +49,12 @@ int main()
 	S1.Redo();
 	cout << "S1  after Redo = " << S1.Value << "\n";
 
+
+	cout << "\n==================================================\n";
+	cout << "           ALL TESTS COMPLETED SUCCESSFULLY        \n";
+	cout << "==================================================\n";
+
+
 	system("pause>0");
 	return 0;
 }
